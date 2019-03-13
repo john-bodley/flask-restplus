@@ -233,8 +233,12 @@ Flask-RESTPlus will respond with a 400 Bad Request and a response highlighting t
 .. code-block:: console
 
     $ curl -d 'rate=foo' http://127.0.0.1:5000/todos
-    {'status': 400, 'message': 'foo cannot be converted to int'}
-
+    {
+        "errors": {
+            "rate": "Rate to charge for this resource invalid literal for int() with base 10: 'foo'"
+        },
+        "message": "Input payload validation failed"
+    }
 
 The :mod:`~inputs` module provides a number of included common conversion
 functions such as :func:`~inputs.date` and :func:`~inputs.url`.
